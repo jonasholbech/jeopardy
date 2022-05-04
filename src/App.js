@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useContext } from "react";
+import { MachineContext, MachineDispatchContext } from "./contexts/Machine";
+import PlayerForm from "./screens/PlayerForm";
+import ChooseQuiz from "./screens/ChooseQuiz";
+import QuizFound from "./screens/QuizFound";
+export default function App() {
+  const state = useContext(MachineContext);
+  //const send = useContext(MachineDispatchContext);
+  //const active = state.matches("active");
+  //const { count } = state.context;
 
-function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {state.value === "idle" && <PlayerForm />}
+      {state.value === "chooseQuiz" && <ChooseQuiz />}
+      {state.value === "quizFound" && <QuizFound />}
+      <Debugger />
     </div>
   );
 }
 
-export default App;
+function Debugger() {
+  const state = useContext(MachineContext);
+  const send = useContext(MachineDispatchContext);
+  return (
+    <details>
+      <summary>Debugger</summary>
+      <div>
+        <pre>State: {JSON.stringify(state, null, 2)}</pre>
+      </div>
+      <button onClick={() => send("NEXT")}>NEXT</button>
+    </details>
+  );
+}
