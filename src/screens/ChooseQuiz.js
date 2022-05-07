@@ -1,11 +1,10 @@
-import { useState, useContext } from "react";
-import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
+import { useContext } from "react";
+import { MachineDispatchContext } from "../contexts/Machine";
 export default function ChooseQuiz() {
-  const [filename, setFilename] = useState("");
   const send = useContext(MachineDispatchContext);
   function submit(e) {
     e.preventDefault();
-    send({ type: "SEARCH", filename });
+    send("SEARCH");
   }
   return (
     <div className="ChooseQuiz">
@@ -16,7 +15,7 @@ export default function ChooseQuiz() {
           type="text"
           name="filename"
           id="form_filename"
-          onChange={(e) => setFilename(e.target.value)}
+          onChange={(e) => send(e)}
         />
         <button>Find quiz</button>
       </form>
