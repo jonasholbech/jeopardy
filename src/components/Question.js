@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
+import { useBbox } from "../hooks/useBbox";
 export default function Question({ index, answer, question, colID, qID }) {
   const state = useContext(MachineContext);
   const send = useContext(MachineDispatchContext);
-
+  const [bbox, ref] = useBbox();
   function getState() {
     if (
       state.matches("game.answerShown") &&
@@ -32,10 +33,21 @@ export default function Question({ index, answer, question, colID, qID }) {
     }
   }
   return (
-    <div className={`Question ${getState() > 1 ? "active" : ""}`}>
+    <div ref={ref} className={`Question ${getState() > 1 ? "active" : ""}`}>
       <button onClick={() => send({ type: "click", q: { colID, qID } })}>
         {getText()}
+        <br />
+        {bbox.x}
       </button>
     </div>
   );
 }
+/*
+ style={{
+        transform: `translateX(${
+          getState() > 1
+            ? `${window.innerWidth / 2 - bbox.x - bbox.width / 4}px`
+            : "0px"
+        })`,
+      }}
+*/
