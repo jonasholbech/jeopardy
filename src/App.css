@@ -12,6 +12,7 @@
 }
 .Question {
   transition: all 0.4s;
+  transform-origin: center;
 }
 .Question button {
   border: none;
@@ -20,4 +21,7 @@
   border: 1px solid yellow;
   width: 100%;
   height: 100%;
+}
+.Question.active {
+  scale: 2;
 }

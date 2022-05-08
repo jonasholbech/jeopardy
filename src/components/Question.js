@@ -32,16 +32,30 @@ export default function Question({ index, answer, question, colID, qID }) {
         return (qID + 1) * 100;
     }
   }
+  const center = window.innerWidth / 2;
+  const x = bbox.x;
+  /* const scaledWidth = bbox.width * 2; */
+  const newX = center - bbox.width / 2;
+  const diff = newX - x;
+  const scaled = diff / 2;
   return (
-    <div ref={ref} className={`Question ${getState() > 1 ? "active" : ""}`}>
+    <div
+      ref={ref}
+      className={`Question ${getState() > 1 ? "active" : ""}`}
+      style={{ transform: getState() > 1 ? `translateX(${scaled}px)` : "" }}
+    >
       <button onClick={() => send({ type: "click", q: { colID, qID } })}>
         {getText()}
         <br />
-        {bbox.x}
+        {bbox.x} {bbox.width} {window.innerWidth}
       </button>
     </div>
   );
 }
+/*
+
+
+*/
 /*
  style={{
         transform: `translateX(${
