@@ -19,6 +19,7 @@ export const jeopardyMachine =
         formPlayerName: "",
         formQuizName: "beginner-js",
         activeQuestion: null,
+        pool: 0,
       },
       strict: true,
       id: "jeopardy",
@@ -72,6 +73,7 @@ export const jeopardyMachine =
             src: (ctx, evt) => myFetch(`quizzes/${ctx.formQuizName}.json`),
             onDone: [
               {
+                actions: "setQuiz",
                 target: "game",
               },
             ],
@@ -83,7 +85,7 @@ export const jeopardyMachine =
           },
         },
         game: {
-          entry: ["setQuiz", "setFirstPlayer"], //entry kan som regel (med fordel) laves om til actions
+          entry: ["setFirstPlayer"], //entry kan som regel (med fordel) laves om til actions
           on: {
             finish: "end",
           },
@@ -91,10 +93,10 @@ export const jeopardyMachine =
           states: {
             idle: {
               on: {
-                nextPlayer: {
+                /*  nextPlayer: {
                   actions: "nextPlayer",
                   target: "idle",
-                },
+                }, */
                 click: {
                   actions: "showAnswer",
                   target: "answerShown",
@@ -111,13 +113,10 @@ export const jeopardyMachine =
             },
             questionShown: {
               on: {
-                next: "awardPoints",
-              },
-            },
-            awardPoints: {
-              actions: "awardPoints",
-              on: {
-                next: "idle",
+                awardPoints: {
+                  target: "idle",
+                  actions: "awardPoints",
+                },
               },
             },
           },
@@ -133,7 +132,20 @@ export const jeopardyMachine =
     {
       guards: {},
       actions: {
-        awardPoints: {},
+        awardPoints: assign({
+          players: (ctx, evt) => {
+            return ctx.players.map((player) => {
+              if (player.player === evt.player) {
+                return { ...player, score: player.score + ctx.pool };
+              }
+              return player;
+            });
+          },
+          activeQuestion: () => null,
+          pool: () => 0,
+          currentPlayer: (ctx, evt) =>
+            ctx.players.findIndex((p) => p.player === evt.player),
+        }),
         updateFormQuizName: assign({
           formQuizName: (ctx, evt) => {
             return evt.target.value;
@@ -141,15 +153,16 @@ export const jeopardyMachine =
         }),
         showAnswer: assign({
           activeQuestion: (ctx, evt) => evt.q,
+          pool: (ctx, evt) => evt.pool,
         }),
-        nextPlayer: assign({
+        /* nextPlayer: assign({
           currentPlayer: (ctx, evt) => {
             if (ctx.currentPlayer + 1 < ctx.players.length) {
               return ctx.currentPlayer + 1;
             }
             return 0;
           },
-        }),
+        }), */
         setFirstPlayer: assign({
           currentPlayer: (ctx, evt) =>
             Math.floor(Math.random() * ctx.players.length),

@@ -1,3 +1,8 @@
+.Game h1 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
 #gameBoard {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -8,7 +13,7 @@
 
 .CategoryColumn {
   display: grid;
-  grid-template-rows: repeat(6, 13vh);
+  grid-template-rows: auto repeat(5, 13vh);
   text-align: center;
 }
 .Question {
@@ -22,7 +27,11 @@
   border: 1px solid yellow;
   width: 100%;
   height: 100%;
+  font-size: 2rem;
 }
 .Question.active {
   scale: 2;
+}
+.Question.active button {
+  font-size: 1.5rem;
 }

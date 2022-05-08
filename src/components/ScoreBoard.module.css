@@ -1,0 +1,15 @@
+.ScoreBoard {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  text-align: center;
+}
+.ScoreBoard p {
+  font-size: 2rem;
+}
+h3 {
+  border-bottom: 2px solid transparent;
+}
+.active h3 {
+  border-bottom: 2px solid yellow;
+}

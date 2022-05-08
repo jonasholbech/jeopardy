@@ -1,6 +1,7 @@
 import { useContext, useState, useRef } from "react";
 import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
 import CategoryColumn from "../components/CategoryColumn";
+import ScoreBoard from "../components/ScoreBoard";
 export default function Game() {
   const state = useContext(MachineContext);
   const send = useContext(MachineDispatchContext);
@@ -13,6 +14,7 @@ export default function Game() {
           <CategoryColumn key={category.category} {...category} colID={index} />
         ))}
       </section>
+      <ScoreBoard />
     </div>
   );
 }

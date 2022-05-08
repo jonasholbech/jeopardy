@@ -44,10 +44,12 @@ export default function Question({ index, answer, question, colID, qID }) {
       className={`Question ${getState() > 1 ? "active" : ""}`}
       style={{ transform: getState() > 1 ? `translateX(${scaled}px)` : "" }}
     >
-      <button onClick={() => send({ type: "click", q: { colID, qID } })}>
+      <button
+        onClick={() =>
+          send({ type: "click", q: { colID, qID }, pool: (index + 1) * 100 })
+        }
+      >
         {getText()}
-        <br />
-        {bbox.x} {bbox.width} {window.innerWidth}
       </button>
     </div>
   );
