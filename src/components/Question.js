@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
-
+import { useBbox } from "../hooks/useBbox";
 export default function Question({ index, answer, question, colID, qID }) {
   const state = useContext(MachineContext);
   const send = useContext(MachineDispatchContext);
-
+  const [bbox, ref] = useBbox();
   function getState() {
     if (
       state.matches("game.answerShown") &&
@@ -32,11 +32,36 @@ export default function Question({ index, answer, question, colID, qID }) {
         return (qID + 1) * 100;
     }
   }
+  const center = window.innerWidth / 2;
+  const x = bbox.x;
+  /* const scaledWidth = bbox.width * 2; */
+  const newX = center - bbox.width / 2;
+  const diff = newX - x;
+  const scaled = diff / 2;
   return (
-    <div className={`Question ${getState() > 1 ? "active" : ""}`}>
+    <div
+      ref={ref}
+      className={`Question ${getState() > 1 ? "active" : ""}`}
+      style={{ transform: getState() > 1 ? `translateX(${scaled}px)` : "" }}
+    >
       <button onClick={() => send({ type: "click", q: { colID, qID } })}>
         {getText()}
+        <br />
+        {bbox.x} {bbox.width} {window.innerWidth}
       </button>
     </div>
   );
 }
+/*
+
+
+*/
+/*
+ style={{
+        transform: `translateX(${
+          getState() > 1
+            ? `${window.innerWidth / 2 - bbox.x - bbox.width / 4}px`
+            : "0px"
+        })`,
+      }}
+*/
