@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
+
 export default function Question({ index, answer, question, colID, qID }) {
   const state = useContext(MachineContext);
   const send = useContext(MachineDispatchContext);
