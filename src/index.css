@@ -20,7 +20,8 @@ button {
   margin-bottom: 8px;
 }
 
-code {
+code,
+pre {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
