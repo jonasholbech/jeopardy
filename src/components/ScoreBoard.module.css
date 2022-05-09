@@ -13,3 +13,7 @@ h3 {
 .active h3 {
   border-bottom: 2px solid yellow;
 }
+.ScoreBoard button {
+  border-radius: 8px;
+  font-weight: bold;
+}

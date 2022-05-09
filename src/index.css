@@ -14,10 +14,13 @@ button {
   color: blue;
   background-color: yellow;
   cursor: pointer;
-  border-radius: 8px;
+
   border: none;
   padding: 8px;
   margin-bottom: 8px;
+}
+#ScoreBoard button {
+  border-radius: 8px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
