@@ -29,7 +29,7 @@ export default function Question({ index, answer, question, colID, qID }) {
       case 3:
         return state.context.quiz.categories[colID].questions[qID].question;
       default:
-        return (qID + 1) * 100;
+        return state.context.quiz.categories[colID].questions[qID].points;
     }
   }
   const center = window.innerWidth / 2;
@@ -45,8 +45,13 @@ export default function Question({ index, answer, question, colID, qID }) {
       style={{ transform: getState() > 1 ? `translateX(${scaled}px)` : "" }}
     >
       <button
+        disabled={state.context.quiz.categories[colID].questions[qID].completed}
         onClick={() =>
-          send({ type: "click", q: { colID, qID }, pool: (index + 1) * 100 })
+          send({
+            type: "click",
+            q: { colID, qID },
+            pool: state.context.quiz.categories[colID].questions[qID].points,
+          })
         }
       >
         {getText()}
@@ -55,7 +60,7 @@ export default function Question({ index, answer, question, colID, qID }) {
   );
 }
 /*
-
+//Update completed on "click"
 
 */
 /*

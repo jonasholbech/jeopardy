@@ -29,6 +29,9 @@
   height: 100%;
   font-size: 2rem;
 }
+.Question button:disabled {
+  opacity: 0.5;
+}
 .Question.active {
   scale: 2;
 }

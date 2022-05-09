@@ -185,6 +185,11 @@ export const jeopardyMachine =
         }),
         setQuiz: assign({
           quiz: (ctx, evt) => {
+            evt.data.categories.forEach((category) => {
+              category.questions = category.questions.map((q, i) => {
+                return { ...q, completed: false, points: (i + 1) * 100 };
+              });
+            });
             return evt.data;
           },
           currentPlayer: (ctx) =>
