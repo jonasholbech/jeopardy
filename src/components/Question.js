@@ -57,6 +57,4 @@ export default function Question({ answer, question, id, points, completed }) {
     </div>
   );
 }
-/*
-//TODO: Update completed on "click"
-*/
+//TODO: can i remove poll and just find the question with the right id?
