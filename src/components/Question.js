@@ -1,22 +1,20 @@
 import { useContext } from "react";
 import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
 import { useBbox } from "../hooks/useBbox";
-export default function Question({ index, answer, question, colID, qID }) {
+export default function Question({ answer, question, id, points, completed }) {
   const state = useContext(MachineContext);
   const send = useContext(MachineDispatchContext);
   const [bbox, ref] = useBbox();
   function getState() {
     if (
       state.matches("game.answerShown") &&
-      state.context.activeQuestion.qID === qID &&
-      state.context.activeQuestion.colID === colID
+      state.context.activeQuestion === id
     ) {
       return 2;
     }
     if (
       state.matches("game.questionShown") &&
-      state.context.activeQuestion.qID === qID &&
-      state.context.activeQuestion.colID === colID
+      state.context.activeQuestion === id
     ) {
       return 3;
     }
@@ -25,11 +23,11 @@ export default function Question({ index, answer, question, colID, qID }) {
   function getText() {
     switch (getState()) {
       case 2:
-        return state.context.quiz.categories[colID].questions[qID].answer;
+        return answer;
       case 3:
-        return state.context.quiz.categories[colID].questions[qID].question;
+        return question;
       default:
-        return state.context.quiz.categories[colID].questions[qID].points;
+        return points;
     }
   }
   const center = window.innerWidth / 2;
@@ -45,12 +43,12 @@ export default function Question({ index, answer, question, colID, qID }) {
       style={{ transform: getState() > 1 ? `translateX(${scaled}px)` : "" }}
     >
       <button
-        disabled={state.context.quiz.categories[colID].questions[qID].completed}
+        disabled={completed}
         onClick={() =>
           send({
             type: "click",
-            q: { colID, qID },
-            pool: state.context.quiz.categories[colID].questions[qID].points,
+            q: id,
+            pool: points,
           })
         }
       >
@@ -60,15 +58,5 @@ export default function Question({ index, answer, question, colID, qID }) {
   );
 }
 /*
-//Update completed on "click"
-
-*/
-/*
- style={{
-        transform: `translateX(${
-          getState() > 1
-            ? `${window.innerWidth / 2 - bbox.x - bbox.width / 4}px`
-            : "0px"
-        })`,
-      }}
+//TODO: Update completed on "click"
 */

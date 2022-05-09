@@ -1,4 +1,6 @@
 import { createMachine, assign } from "xstate";
+import uniqid from "uniqid";
+import clone from "just-clone";
 async function myFetch(url) {
   console.log("fetching from", url);
   const response = await fetch(url);
@@ -136,10 +138,25 @@ export const jeopardyMachine =
           players: (ctx, evt) => {
             return ctx.players.map((player) => {
               if (player.player === evt.player) {
-                return { ...player, score: player.score + ctx.pool };
+                return {
+                  ...player,
+                  score: player.score + ctx.pool,
+                };
               }
               return player;
             });
+          },
+          quiz: (ctx, evt) => {
+            const copy = clone(ctx.quiz);
+            copy.categories.forEach((category) => {
+              let item = category.questions.find(
+                (q) => q.id === ctx.activeQuestion
+              );
+              if (item) {
+                item.completed = true;
+              }
+            });
+            return copy;
           },
           activeQuestion: () => null,
           pool: () => 0,
@@ -187,7 +204,12 @@ export const jeopardyMachine =
           quiz: (ctx, evt) => {
             evt.data.categories.forEach((category) => {
               category.questions = category.questions.map((q, i) => {
-                return { ...q, completed: false, points: (i + 1) * 100 };
+                return {
+                  ...q,
+                  completed: false,
+                  points: (i + 1) * 100,
+                  id: uniqid(),
+                };
               });
             });
             return evt.data;
