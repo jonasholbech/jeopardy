@@ -5,6 +5,7 @@ import PlayerForm from "./screens/PlayerForm";
 import ChooseQuiz from "./screens/ChooseQuiz";
 import QuizFound from "./screens/QuizFound";
 import Quiz404 from "./screens/Quiz404";
+import End from "./screens/End";
 import Game from "./screens/Game";
 export default function App() {
   const state = useContext(MachineContext);
@@ -18,7 +19,8 @@ export default function App() {
       {state.matches("chooseQuiz") && <ChooseQuiz />}
       {state.matches("quiz404") && <Quiz404 />}
       {state.matches("quizFound") && <QuizFound />}
-      {state.matches("game") && <Game />}
+      {state.matches("game") && !state.matches("game.end") && <Game />}
+      {state.matches("game.end") && <End />}
       <Debugger />
     </div>
   );
@@ -27,7 +29,7 @@ export default function App() {
 function Debugger() {
   const state = useContext(MachineContext);
   const send = useContext(MachineDispatchContext);
-  console.log(state);
+  //console.log(state);
 
   return (
     <details>
