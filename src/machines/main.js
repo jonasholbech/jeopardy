@@ -2,7 +2,6 @@ import { createMachine, assign } from "xstate";
 import uniqid from "uniqid";
 import clone from "just-clone";
 async function myFetch(url) {
-  console.log("fetching from", url);
   const response = await fetch(url);
   const json = await response.json();
   return response.ok ? json : Promise.reject(json);
@@ -103,25 +102,27 @@ export const jeopardyMachine =
             answerShown: {
               on: {
                 click: {
-                  actions: "",
                   target: "questionShown",
                 },
               },
             },
+            decider: {
+              always: [
+                {
+                  target: "idle",
+                  cond: "hasUnasweredQuestions",
+                },
+                {
+                  target: "end",
+                },
+              ],
+            },
             questionShown: {
               on: {
-                awardPoints: [
-                  {
-                    target: "idle",
-                    actions: "awardPoints",
-                    //logikken her er skidt left > 1, kører forkert tidspunkt?
-                    //de sidste points bliver ikke lagt til
-                    cond: "hasUnasweredQuestions",
-                  },
-                  {
-                    target: "end",
-                  },
-                ],
+                awardPoints: {
+                  target: "decider",
+                  actions: "awardPoints",
+                },
               },
             },
             end: {},
@@ -144,7 +145,7 @@ export const jeopardyMachine =
             ...quiz.categories[3].questions,
             ...quiz.categories[4].questions,
           ];
-          return all.filter((i) => !i.completed).length > 1;
+          return all.filter((i) => !i.completed).length > 0;
         },
       },
       actions: {
