@@ -1,0 +1,22 @@
+.graph {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+}
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.barwrapper {
+  height: 500px;
+  display: flex;
+  align-items: flex-end;
+}
+.bar {
+  background-color: yellow;
+  width: 50px;
+  transition: all 0.3s;
+  height: 0px;
+}
+.name {
+}

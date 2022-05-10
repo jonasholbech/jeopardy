@@ -7,7 +7,7 @@ export default function ChooseQuiz() {
     send("SEARCH");
   }
   return (
-    <div className="ChooseQuiz">
+    <div className="ChooseQuiz boxed">
       <h1>Choose a Quiz</h1>
       <form onSubmit={submit}>
         <label htmlFor="form_filename">Quiz name</label>

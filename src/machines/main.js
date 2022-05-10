@@ -18,8 +18,8 @@ const contextProd = {
 };
 const contextDev = {
   players: [
-    { player: "Jonas", score: 0 },
-    { player: "Dannie", score: 0 },
+    { player: "Jonas", score: 1000 },
+    { player: "Dannie", score: 1200 },
   ],
   currentPlayer: null,
   quiz: null,
@@ -30,7 +30,7 @@ const contextDev = {
 };
 const initialDev = "search";
 const initialProd = "players";
-const MODE = "prod";
+const MODE = "dev";
 export const jeopardyMachine =
   /** @xstate-layout N4IgpgJg5mDOIC5QCswHsAOBDAThAngHQCWEANmIQO5ZkDWAxAAoCiAIgPoDCA8gKoA5ACpseAdQGJQGNLGIAXYmgB2UkAA9EAJgCMAVkIBmACzGAnGYAchgAw3LOnYYDsAGhD5thrUcuXnes5aZoYAbDahZs4AvtHuqJi4BCTklDQKzOzc-MKiEmoycooqapoIelqGhDpaWoHGNg1mOmZa7p4IlT6GfgFBIeGRMXEgCdh4RKQUzAAyAIIAmiwASgDK3AASPKsskkgghQpKqvtllqGhhHpRoXoRrc7noe3axt29xo6NkY5asfHocbJKZgBiwACuACMALYKAqyI4lU6IfyXa7OW73LSPC4vBD6Hw2KxmYwYypOMw2PT-UaApKTVIMADGAAssMoYPCisdSiiLlcbndItinnjDM1CGYLqYTDZnC1ajSxvTCBCYRkuYiTqAzvz0ZjhTjnh5EDpGtVvEFzHo3qEAmYlXSJoRWeyYAxNcVtRoURiBRihQ9RSaECZjIQ7DZanKet4ItSRsrnay0LIwABFcHEABeDB2c2WXA2np5yPxdSqVhsLRJg0MeK0b18-k+ZuMPxqjsSztgYFwrIYEBUlGIygAbmg6JQk8le-2WQhRxOmVgvQBtGwAXRLSJ1ppt4csNnFziCNUeDjFWhs1UselCOlCjYsdksXaBRDnOAHYBwODQOCEBgZCrgAZgB0KEDOn59t+C5LmgK7rluO7emU+imIQR4nmeIqXiGtQGM4hiGE4YRaOElhdLEIzKGgEBwGo0EpBQ1C0HQqG8ggZgGFKjahFRGKPM0egNhRvhPoEdh2lY2LviqIJsXC+yHF6XENOG141D8xGWpYYmXD0knONJziycMALdsCqSqvImCcWW8o6JKF6mM0JiGHookEeJRl1CZERmYJ8nOopkJkKOdCjlADl7ggQQNjxRiBHo2nYo4lgOomTrWRQsU+ggxj6SG+hVJ85iRK+oTGNchghbOUKwvI+VlFEziEM4RWUlYpjBHUeKUi5NReU+x7Xrc9VEK6HJgC1iBtVhPEKn4R6kmYYq2FhPTEVKtgPnak0uiyqa9pmOZzfiVLdMeIQVLJThtARZqSo0FhkjaAkWbSVkwfOF1OAJ-ryna17VnoxUdLoN6UuYNx1O2-iHQAjlm2YAGJoOCygQP9Jk+DxmUVHUD7NA2fgddW-jYiZdqWMYyOoxp-2RGYkrGOKFSOLYtQNi0HV7To8p3J5p5-NlP0XY2eI6G+NFAA */
   createMachine(
@@ -226,12 +226,15 @@ export const jeopardyMachine =
               category.questions = category.questions.map((q, i) => {
                 return {
                   ...q,
-                  completed: false,
+                  completed: MODE === "dev" ? true : false,
                   points: (i + 1) * 100,
                   id: uniqid(),
                 };
               });
             });
+            if (MODE === "dev") {
+              evt.data.categories[0].questions[0].completed = false;
+            }
             return evt.data;
           },
           currentPlayer: (ctx) =>
