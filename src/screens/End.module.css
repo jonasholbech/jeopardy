@@ -5,7 +5,7 @@
 .player {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .barwrapper {
   height: 500px;
@@ -16,7 +16,7 @@
   background-color: yellow;
   width: 50px;
   transition: all 0.3s;
-  height: 0px;
-}
-.name {
+  height: 50px;
+  color: blue;
+  text-align: center;
 }

@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
+import { MachineContext } from "../contexts/Machine";
 import styles from "./End.module.css";
 import clone from "just-clone";
 import ScoreGraph from "../components/ScoreGraph";
 export default function End() {
   const state = useContext(MachineContext);
-  const send = useContext(MachineDispatchContext);
 
   let sorted = clone(state.context.players);
   sorted
