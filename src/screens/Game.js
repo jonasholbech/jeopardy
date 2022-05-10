@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { MachineContext } from "../contexts/Machine";
 import CategoryColumn from "../components/CategoryColumn";
 import ScoreBoard from "../components/ScoreBoard";
+import AudioPlayer from "../components/AudioPlayer";
 export default function Game() {
   const state = useContext(MachineContext);
 
@@ -14,6 +15,7 @@ export default function Game() {
         ))}
       </section>
       <ScoreBoard />
+      <AudioPlayer />
     </div>
   );
 }

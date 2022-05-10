@@ -9,70 +9,70 @@
           "answer": "The method you use to listen for events on an element"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is a callback",
+          "answer": "A function that is executed when the event occurs"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         }
       ]
     },
     {
-      "category": "Events2",
+      "category": "DOM Manipulation",
       "questions": [
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is document.querySelector",
+          "answer": "How we grab elements from the DOM"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is document.querySelctorAll",
+          "answer": "How we grab multiple elements from the DOM"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         }
       ]
     },
     {
-      "category": "Events3",
+      "category": "Datatypes",
       "questions": [
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is a string",
+          "answer": "The datatype that holds strings encapsulated in quotes"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is a number",
+          "answer": "that datatype that holds numbers, without quotes"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is an array",
+          "answer": "a datatype that can hold multiple items in a list"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is an object",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "What is a function",
+          "answer": "TODO"
         }
       ]
     },
@@ -80,24 +80,24 @@
       "category": "Events4",
       "questions": [
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         }
       ]
     },
@@ -105,24 +105,24 @@
       "category": "Events5",
       "questions": [
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         },
         {
-          "question": "What is addEventListener",
-          "answer": "The method you use to listen for events on an element"
+          "question": "TODO",
+          "answer": "TODO"
         }
       ]
     }

@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from "react";
+import { useContext, useRef } from "react";
 import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
 export default function PlayerForm() {
   const state = useContext(MachineContext);
@@ -10,7 +10,8 @@ export default function PlayerForm() {
     send(e);
   }
   return (
-    <div className="PlayerForm">
+    <div className="PlayerForm boxed">
+      <h1>Who's playing?</h1>
       <form onSubmit={addPlayer} ref={formEl}>
         <label htmlFor="form_name">Name</label>
         <input
