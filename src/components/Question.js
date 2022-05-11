@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import ReactMarkdown from "react-markdown";
 import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
 import { useBbox } from "../hooks/useBbox";
 export default function Question({ answer, question, id, points, completed }) {
@@ -20,6 +21,7 @@ export default function Question({ answer, question, id, points, completed }) {
     }
     return 1;
   }
+
   function getText() {
     switch (getState()) {
       case 2:
@@ -27,7 +29,7 @@ export default function Question({ answer, question, id, points, completed }) {
       case 3:
         return question;
       default:
-        return points;
+        return points.toString();
     }
   }
   const center = window.innerWidth / 2;
@@ -52,7 +54,7 @@ export default function Question({ answer, question, id, points, completed }) {
           })
         }
       >
-        {getText()}
+        <ReactMarkdown>{getText()}</ReactMarkdown>
       </button>
     </div>
   );

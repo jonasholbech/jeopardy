@@ -10,19 +10,19 @@
         },
         {
           "question": "What is a callback",
-          "answer": "A function that is executed when the event occurs"
+          "answer": "A function that is executed when an event occurs"
         },
         {
-          "question": "TODO",
-          "answer": "TODO"
+          "question": "What is the event object",
+          "answer": "Often abbreviated to `e` or `evt`"
         },
         {
-          "question": "TODO",
-          "answer": "TODO"
+          "question": "What is `e.preventDefault()`",
+          "answer": "The method to prevent the default action of an event"
         },
         {
-          "question": "TODO",
-          "answer": "TODO"
+          "question": "What is event delegation",
+          "answer": "Instead of assigning a handler to each element - we put a single handler on a common parent"
         }
       ]
     },

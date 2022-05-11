@@ -20,7 +20,9 @@ export default function PlayerScore({ player, index }) {
 
   return (
     <div
-      className={index === state.context.currentPlayer ? styles.active : null}
+      className={`${styles.PlayerScore} ${
+        index === state.context.currentPlayer ? styles.active : null
+      }`}
     >
       <h3>{player.player}</h3>
       <p>

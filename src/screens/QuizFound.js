@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
+import { MachineContext } from "../contexts/Machine";
 export default function QuizFound() {
-  const send = useContext(MachineDispatchContext);
   const state = useContext(MachineContext);
 
   return (

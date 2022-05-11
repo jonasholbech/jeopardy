@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
-import { MachineContext, MachineDispatchContext } from "../contexts/Machine";
+import { useContext } from "react";
+import { MachineContext } from "../contexts/Machine";
 import styles from "./ScoreBoard.module.css";
 import PlayerScore from "./PlayerScore";
 export default function ScoreBoard(props) {
   const state = useContext(MachineContext);
-  const send = useContext(MachineDispatchContext);
 
   return (
     <section id="ScoreBoard" className={styles.ScoreBoard}>

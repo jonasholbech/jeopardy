@@ -25,4 +25,6 @@ code,
 pre {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+  color: white;
+  text-shadow: 1px 1px #000000;
 }

@@ -226,7 +226,7 @@ export const jeopardyMachine =
               category.questions = category.questions.map((q, i) => {
                 return {
                   ...q,
-                  completed: MODE === "dev" ? true : false,
+                  completed: false, //MODE === "dev" ? true : false,
                   points: (i + 1) * 100,
                   id: uniqid(),
                 };
